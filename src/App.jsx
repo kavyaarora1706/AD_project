@@ -15,6 +15,7 @@ import DeliveryTracking from "./pages/DeliveryTracking";
 import PaymentTracking from "./pages/PaymentTracking";
 import FairPrice from "./pages/FairPrice";
 import Notifications from "./pages/Notifications";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -77,6 +78,11 @@ function App() {
         <Route
           path="/notifications"
           element={<Notifications />}
+        />
+
+        <Route
+          path="/admin"
+          element={<AdminDashboard />}
         />
 
       </Routes>

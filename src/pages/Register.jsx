@@ -22,6 +22,17 @@ function Register() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    const existingUsers =
+      JSON.parse(localStorage.getItem("users")) || [];
+
+    localStorage.setItem(
+      "users",
+      JSON.stringify([
+        ...existingUsers,
+        form
+      ])
+    );
+
     localStorage.setItem(
       "user",
       JSON.stringify(form)
