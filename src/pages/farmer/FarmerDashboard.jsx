@@ -75,6 +75,13 @@ function FarmerDashboard() {
             Track Deliveries
           </Link>
 
+          <Link
+            to="/payments"
+            className="btn secondary"
+          >
+            Payment Tracking
+          </Link>
+
         </div>
 
       </div>
