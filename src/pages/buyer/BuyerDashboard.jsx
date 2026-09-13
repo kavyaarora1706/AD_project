@@ -30,6 +30,10 @@ function BuyerDashboard() {
 				<Link to="/buyer/crops" className="btn">
 					Browse Crops
 				</Link>
+
+				<Link to="/delivery-tracking" className="btn secondary">
+					Track Deliveries
+				</Link>
 			</div>
 		</>
 	);

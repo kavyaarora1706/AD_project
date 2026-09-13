@@ -11,6 +11,7 @@ import Offers from "./pages/farmer/Offers";
 
 import BuyerDashboard from "./pages/buyer/BuyerDashboard";
 import BrowseCrops from "./pages/buyer/BrowseCrops";
+import DeliveryTracking from "./pages/DeliveryTracking";
 
 function App() {
   return (
@@ -53,6 +54,11 @@ function App() {
         <Route
           path="/buyer/crops"
           element={<BrowseCrops />}
+        />
+
+        <Route
+          path="/delivery-tracking"
+          element={<DeliveryTracking />}
         />
 
       </Routes>

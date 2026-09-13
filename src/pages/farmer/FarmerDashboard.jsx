@@ -68,6 +68,13 @@ function FarmerDashboard() {
             View Offers
           </Link>
 
+          <Link
+            to="/delivery-tracking"
+            className="btn secondary"
+          >
+            Track Deliveries
+          </Link>
+
         </div>
 
       </div>
