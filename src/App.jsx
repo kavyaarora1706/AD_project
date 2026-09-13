@@ -14,6 +14,7 @@ import BrowseCrops from "./pages/buyer/BrowseCrops";
 import DeliveryTracking from "./pages/DeliveryTracking";
 import PaymentTracking from "./pages/PaymentTracking";
 import FairPrice from "./pages/FairPrice";
+import Notifications from "./pages/Notifications";
 
 function App() {
   return (
@@ -71,6 +72,11 @@ function App() {
         <Route
           path="/fair-price"
           element={<FairPrice />}
+        />
+
+        <Route
+          path="/notifications"
+          element={<Notifications />}
         />
 
       </Routes>

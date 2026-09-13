@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import NotificationBell from "./NotificationBell";
 
 function Navbar() {
   return (
@@ -18,6 +19,8 @@ function Navbar() {
         <Link to="/buyer/dashboard">
           Buyer
         </Link>
+
+        <NotificationBell />
 
         <Link to="/login">
           Login

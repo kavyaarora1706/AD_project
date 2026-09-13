@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
+import { addNotification } from "../../utils/notifications";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -10,11 +11,24 @@ function Offers() {
   }, []);
 
   function updateOffer(id, changes) {
+    const offer = offers.find((item) => item.id === id);
     const updatedOffers = offers.map((offer) =>
       offer.id === id ? { ...offer, ...changes } : offer
     );
     setOffers(updatedOffers);
     localStorage.setItem("offers", JSON.stringify(updatedOffers));
+
+    if (offer && changes.status === "Accepted") {
+      addNotification("Offer Accepted", `Your offer for ${offer.cropName} was accepted.`, "contract");
+    }
+
+    if (offer && changes.status === "Rejected") {
+      addNotification("Offer Rejected", `Your offer for ${offer.cropName} was rejected.`, "offer");
+    }
+
+    if (offer && changes.status === "Countered") {
+      addNotification("Counter Offer", `A counter offer was sent for ${offer.cropName}.`, "offer");
+    }
   }
 
   function handleCounterOffer(event, offer) {

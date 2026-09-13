@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import CropCard from "../../components/CropCard";
 import OfferModal from "../../components/OfferModal";
+import { addNotification } from "../../utils/notifications";
 
 function BrowseCrops() {
 	const [crops, setCrops] = useState([]);
@@ -27,6 +28,11 @@ function BrowseCrops() {
 		};
 
 		localStorage.setItem("offers", JSON.stringify([...existingOffers, newOffer]));
+		addNotification(
+			"New Offer",
+			`A buyer made an offer for ${selectedCrop.name}.`,
+			"offer"
+		);
 		setSelectedCrop(null);
 		alert("Offer sent to the farmer!");
 	}

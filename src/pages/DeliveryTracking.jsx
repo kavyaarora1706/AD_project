@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { addNotification } from "../utils/notifications";
 
 function DeliveryTracking() {
   const [contracts, setContracts] = useState(
@@ -18,6 +19,12 @@ function DeliveryTracking() {
     localStorage.setItem(
       "contracts",
       JSON.stringify(updatedContracts)
+    );
+
+    addNotification(
+      "Delivery Updated",
+      `Delivery for contract ${id} is now ${newStatus}.`,
+      "delivery"
     );
   }
 

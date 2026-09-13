@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { addNotification } from "../utils/notifications";
 
 function PaymentTracking() {
   const [contracts, setContracts] = useState(
@@ -25,6 +26,12 @@ function PaymentTracking() {
     localStorage.setItem(
       "contracts",
       JSON.stringify(updatedContracts)
+    );
+
+    addNotification(
+      "Payment Updated",
+      `Payment for contract ${id} is now ${newStatus}.`,
+      "payment"
     );
   }
 
