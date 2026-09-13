@@ -2,6 +2,20 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 
 function BuyerDashboard() {
+	const contracts = JSON.parse(localStorage.getItem("contracts")) || [];
+	const offers = JSON.parse(localStorage.getItem("offers")) || [];
+	const activeContracts = contracts.filter(
+		(contract) => contract.status === "Active"
+	);
+	const completedOrders = contracts.filter(
+		(contract) =>
+			contract.status === "Completed" ||
+			contract.deliveryStatus === "Completed"
+	);
+	const buyerOffers = offers.filter(
+		(offer) => offer.buyer === JSON.parse(localStorage.getItem("user"))?.name
+	);
+
 	return (
 		<>
 			<Navbar />
@@ -13,17 +27,17 @@ function BuyerDashboard() {
 				<div className="dashboard-grid">
 					<div className="stat-card">
 						<h3>Active Contracts</h3>
-						<p>5</p>
+						<p>{activeContracts.length}</p>
 					</div>
 
 					<div className="stat-card">
 						<h3>Pending Offers</h3>
-						<p>2</p>
+						<p>{buyerOffers.filter((offer) => offer.status === "Pending").length}</p>
 					</div>
 
 					<div className="stat-card">
 						<h3>Completed Orders</h3>
-						<p>12</p>
+						<p>{completedOrders.length}</p>
 					</div>
 				</div>
 

@@ -19,6 +19,35 @@ function Offers() {
     localStorage.setItem("offers", JSON.stringify(updatedOffers));
 
     if (offer && changes.status === "Accepted") {
+      const contracts = JSON.parse(localStorage.getItem("contracts")) || [];
+      const existingContract = contracts.find(
+        (contract) => contract.offerId === offer.id
+      );
+
+      if (!existingContract) {
+        const crops = JSON.parse(localStorage.getItem("crops")) || [];
+        const crop = crops.find((item) => item.id === offer.cropId);
+        const newContract = {
+          id: Date.now(),
+          offerId: offer.id,
+          cropName: offer.cropName,
+          farmer: offer.farmer || "Farmer",
+          buyer: offer.buyer,
+          quantity: offer.quantity,
+          unit: offer.unit,
+          price: offer.price,
+          harvestDate: crop?.harvestDate || "Not specified",
+          status: "Active",
+          deliveryStatus: "Active",
+          paymentStatus: "Payment Pending"
+        };
+
+        localStorage.setItem(
+          "contracts",
+          JSON.stringify([...contracts, newContract])
+        );
+      }
+
       addNotification("Offer Accepted", `Your offer for ${offer.cropName} was accepted.`, "contract");
     }
 

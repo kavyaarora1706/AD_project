@@ -2,10 +2,22 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 
 function FarmerDashboard() {
-
   const user = JSON.parse(
     localStorage.getItem("user")
   );
+  const crops = JSON.parse(localStorage.getItem("crops")) || [];
+  const contracts = JSON.parse(localStorage.getItem("contracts")) || [];
+  const offers = JSON.parse(localStorage.getItem("offers")) || [];
+  const activeContracts = contracts.filter(
+    (contract) => contract.status === "Active"
+  );
+  const totalEarnings = contracts
+    .filter((contract) => contract.paymentStatus === "Payment Received")
+    .reduce(
+      (total, contract) =>
+        total + Number(contract.quantity || 0) * Number(contract.price || 0),
+      0
+    );
 
   return (
     <>
@@ -25,22 +37,22 @@ function FarmerDashboard() {
 
           <div className="stat-card">
             <h3>My Crops</h3>
-            <p>4</p>
+            <p>{crops.length}</p>
           </div>
 
           <div className="stat-card">
             <h3>Active Contracts</h3>
-            <p>2</p>
+            <p>{activeContracts.length}</p>
           </div>
 
           <div className="stat-card">
             <h3>Pending Offers</h3>
-            <p>3</p>
+            <p>{offers.filter((offer) => offer.status === "Pending").length}</p>
           </div>
 
           <div className="stat-card">
             <h3>Total Earnings</h3>
-            <p>₹82,500</p>
+            <p>₹{totalEarnings.toLocaleString()}</p>
           </div>
 
         </div>
