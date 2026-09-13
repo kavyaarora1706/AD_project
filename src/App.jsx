@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import FarmerDashboard from "./pages/farmer/FarmerDashboard";
 import AddCrop from "./pages/farmer/AddCrop";
 import MyContracts from "./pages/farmer/MyContracts";
+import Offers from "./pages/farmer/Offers";
 
 import BuyerDashboard from "./pages/buyer/BuyerDashboard";
 import BrowseCrops from "./pages/buyer/BrowseCrops";
@@ -36,6 +37,11 @@ function App() {
         <Route
           path="/farmer/contracts"
           element={<MyContracts />}
+        />
+
+        <Route
+          path="/farmer/offers"
+          element={<Offers />}
         />
 
         {/* Buyer */}

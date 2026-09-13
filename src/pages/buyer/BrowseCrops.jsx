@@ -1,21 +1,34 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import CropCard from "../../components/CropCard";
+import OfferModal from "../../components/OfferModal";
 
 function BrowseCrops() {
 	const [crops, setCrops] = useState([]);
+	const [selectedCrop, setSelectedCrop] = useState(null);
 
 	useEffect(() => {
 		const savedCrops = JSON.parse(localStorage.getItem("crops")) || [];
 		setCrops(savedCrops);
 	}, []);
 
-	function handleOffer(crop) {
-		const offer = prompt(`Enter your offer price for ${crop.name}:`);
+	function handleSubmitOffer(offerDetails) {
+		const existingOffers = JSON.parse(localStorage.getItem("offers")) || [];
+		const newOffer = {
+			id: Date.now(),
+			cropId: selectedCrop.id,
+			cropName: selectedCrop.name,
+			farmer: selectedCrop.farmer || "Listed farmer",
+			buyer: JSON.parse(localStorage.getItem("user"))?.name || "Buyer",
+			unit: selectedCrop.unit,
+			...offerDetails,
+			status: "Pending",
+			createdAt: new Date().toISOString()
+		};
 
-		if (!offer) return;
-
-		alert(`Offer of ₹${offer} submitted for ${crop.name}`);
+		localStorage.setItem("offers", JSON.stringify([...existingOffers, newOffer]));
+		setSelectedCrop(null);
+		alert("Offer sent to the farmer!");
 	}
 
 	return (
@@ -30,12 +43,20 @@ function BrowseCrops() {
 					{crops.length === 0 ? (
 						<p>No crops listed yet.</p>
 					) : (
-						crops.map((crop) => (
-							<CropCard key={crop.id} crop={crop} onOffer={handleOffer} />
+							crops.map((crop) => (
+								<CropCard key={crop.id} crop={crop} onOffer={setSelectedCrop} />
 						))
 					)}
 				</div>
 			</div>
+
+			{selectedCrop && (
+				<OfferModal
+					crop={selectedCrop}
+					onClose={() => setSelectedCrop(null)}
+					onSubmit={handleSubmitOffer}
+				/>
+			)}
 		</>
 	);
 }

@@ -61,6 +61,13 @@ function FarmerDashboard() {
             View Contracts
           </Link>
 
+          <Link
+            to="/farmer/offers"
+            className="btn secondary"
+          >
+            View Offers
+          </Link>
+
         </div>
 
       </div>
