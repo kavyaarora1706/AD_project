@@ -549,3 +549,174 @@ select {
 		gap: 15px;
 	}
 }
+
+.fair-price-page {
+	min-height: 100vh;
+	padding: 50px 8%;
+	background: #f5f7f2;
+}
+
+.fair-price-container {
+	max-width: 900px;
+	margin: auto;
+}
+
+.fair-price-intro {
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+.ai-badge {
+	display: inline-block;
+	background: #e5f5e7;
+	color: #237a3b;
+	padding: 7px 14px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.fair-price-intro h1 {
+	font-size: 42px;
+	margin-bottom: 12px;
+}
+
+.fair-price-intro p {
+	color: #666;
+	font-size: 17px;
+}
+
+.fair-price-card {
+	background: white;
+	padding: 30px;
+	border-radius: 15px;
+	border: 1px solid #ddd;
+	margin-bottom: 30px;
+}
+
+.fair-price-card h2 {
+	margin-bottom: 25px;
+}
+
+.fair-price-card label {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 12px;
+}
+
+.fair-price-card button {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.price-result {
+	background: white;
+	padding: 30px;
+	border-radius: 15px;
+	border: 1px solid #ddd;
+}
+
+.result-heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+}
+
+.result-heading span {
+	color: #237a3b;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.recommended-price {
+	text-align: center;
+	background: #eaf5e5;
+	padding: 30px;
+	border-radius: 12px;
+}
+
+.recommended-price p {
+	margin-bottom: 10px;
+}
+
+.recommended-price h1 {
+	font-size: 42px;
+	color: #237a3b;
+}
+
+.recommended-price h1 span {
+	font-size: 16px;
+	color: #555;
+}
+
+.price-range {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 15px;
+	margin: 25px 0;
+}
+
+.price-range div {
+	background: #f5f7f2;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.price-range span {
+	display: block;
+	color: #777;
+	font-size: 13px;
+	margin-bottom: 8px;
+}
+
+.price-range strong {
+	font-size: 20px;
+}
+
+.price-explanation {
+	border-top: 1px solid #ddd;
+	padding-top: 25px;
+}
+
+.price-explanation h3 {
+	margin-bottom: 10px;
+}
+
+.price-explanation p {
+	color: #666;
+	line-height: 1.6;
+}
+
+.price-explanation ul {
+	margin-top: 15px;
+	padding-left: 20px;
+}
+
+.price-explanation li {
+	margin: 8px 0;
+}
+
+.use-price-btn {
+	margin-top: 25px;
+	width: 100%;
+}
+
+@media (max-width: 700px) {
+	.fair-price-intro h1 {
+		font-size: 32px;
+	}
+
+	.price-range {
+		grid-template-columns: 1fr;
+	}
+
+	.result-heading {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}

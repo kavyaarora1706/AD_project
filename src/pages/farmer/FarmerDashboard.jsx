@@ -82,6 +82,13 @@ function FarmerDashboard() {
             Payment Tracking
           </Link>
 
+          <Link
+            to="/fair-price"
+            className="btn"
+          >
+            AI Fair Price
+          </Link>
+
         </div>
 
       </div>
