@@ -2,26 +2,7 @@ import Navbar from "../../components/Navbar";
 import ContractCard from "../../components/ContractCard";
 
 function MyContracts() {
-	const contracts = [
-		{
-			id: 1,
-			cropName: "Wheat",
-			farmer: "Rajesh Kumar",
-			buyer: "FreshMart Pvt Ltd",
-			quantity: "500 kg",
-			price: "28/kg",
-			status: "Active"
-		},
-		{
-			id: 2,
-			cropName: "Tomato",
-			farmer: "Suresh Patil",
-			buyer: "GreenBasket",
-			quantity: "300 kg",
-			price: "32/kg",
-			status: "Payment Pending"
-		}
-	];
+	const contracts = JSON.parse(localStorage.getItem("contracts")) || [];
 
 	return (
 		<>
@@ -29,11 +10,16 @@ function MyContracts() {
 
 			<div className="contracts-page">
 				<h1>My Contracts</h1>
+				<p>Track your active and completed farming contracts.</p>
 
 				<div className="contracts-list">
-					{contracts.map((contract) => (
-						<ContractCard key={contract.id} contract={contract} />
-					))}
+					{contracts.length === 0 ? (
+						<p>No contracts yet.</p>
+					) : (
+						contracts.map((contract) => (
+							<ContractCard key={contract.id} contract={contract} />
+						))
+					)}
 				</div>
 			</div>
 		</>
